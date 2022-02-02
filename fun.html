@@ -1,0 +1,46 @@
+<script type="text/javascript">
+	do{
+		var a = parseInt(prompt("enter 1 to add insert \n press 2 to view \n press 3 to search \n press 4 to update \n press 5 to delete \n press 6 to exit"));
+		var nam = [];
+		var num = [];
+		var j=1;
+		var tre = 2;
+		function abc(x,y,z) 
+		{
+			do{
+				var c = prompt('enter '+y+':');
+			}while(c.length<x)
+			z.push(c);
+			return z;
+		}
+		switch(a)
+		{
+			case 1:
+			var b = parseInt(prompt("How many person you want to add"));
+			for(i=0;i<b;i++)
+			{
+				var id = j++;
+				var z1 = abc(3,"name",nam);
+			 	var z2 = abc(5,"number",num);
+			}
+			break;
+
+			case 2:
+			alert(z1);
+			break;
+
+			case 3:
+			break;
+			case 4:
+			break;
+			case 6:
+			tre = 9;
+			alert("thank you for being here");
+			break;
+			default:
+			break;
+		}
+
+
+	}while(tre<3)
+</script>

@@ -1,0 +1,114 @@
+<script>
+    function eventdata()
+    {
+        var event = [{'id':1,'minage':18,'name':'blood donation','type':'free','rs':0,'capacity':3},
+                {'id':2,'minage':1,'name':'heart donation','type':'paid','rs':100,'capacity':2},
+                {'id':3,'minage':5,'name':'eye donation','type':'paid','rs':200,'capacity':3},
+                {'id':4,'minage':800,'name':'kidney donation','type':'free','rs':0,'capacity':2}];
+        var list = {'event':event,'data':[]};
+        return list;
+    }
+    function pu6o(lsu)
+    {
+        var a = parseInt(prompt('1.REGISTRATION\n2.LOGIN'));
+        switch(a){
+            case 1:
+                lsu.data = registration(lsu.data);
+            break;
+            case 2:
+                login(lsu);
+            break;
+        }
+        pu6o(lsu);
+    }
+    function login(app)
+    {
+        var a = prompt('enter mobile:');
+        var k = check(app.data,a);
+        if(k == '')
+        {
+            alert('Invalid Username.');
+            login(app);
+        }
+
+        var b = prompt('enter password:');
+        if(b != k.pass)
+        {
+            alert('Invalid Password.');
+            login(app);
+        }
+        alert('your r successfully login.');
+        showevent(app.event);
+        evenebooking(app.event,k);
+    }
+    function showevent(event)
+    {
+        for(var i = 0;i<event.length;i++)
+        {
+            alert(event[i].id+' - '+event[i].minage+' - '+event[i].name
+            +' - '+event[i].type+' - '+event[i].rs+' - '+event[i].capacity);
+        }
+    }
+    function getEventId(event,id)
+    {
+        var op = '';
+        for(var i = 0;i<event.length;i++)
+        {
+            if(id == event[i].id)
+            {
+                op = event[i];
+            }
+        }
+        return op;
+    }
+    function checkage(val,val1)
+    {
+        if(val < val1)
+        {
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    function evenebooking(event,user)
+    {
+        var id = parseInt(prompt('enter event id for booking'));
+        var op = getEventId(event,id);
+        if(op == '')
+        {
+            alert('this id is not in event list.');
+            evenebooking(event,user);
+        }
+        if(checkage(user.age,op.minage))
+        {
+            
+        }
+    }
+    function check(da,l)
+    {
+        var tt = '';
+        for(var i=0;i<da.length;i++)
+        {
+            if(l == da[i].num)
+            {
+                tt = da[i];
+                break;
+            }
+        }
+        return tt;
+    }
+    function registration(lop)
+    {
+        var id = 1;
+        var nam = prompt('enter fullname:');
+        var num = prompt('enter number:');
+        var pass = prompt('enter password:');
+        var age = parseInt(prompt('enter age:'));
+        var h = {'id':id,'name':nam,'pass':pass,'num':num,'age':age};
+        lop.push(h);
+        return lop;
+    }
+    var lsu = eventdata();
+    pu6o(lsu);
+</script>
